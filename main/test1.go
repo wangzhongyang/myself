@@ -33,7 +33,8 @@ type Wang struct {
 }
 
 func main() {
-
+	commit := "nima"
+	fmt.Println(commit)
 	w := Wang{
 		Name: "000",
 	}
