@@ -1,0 +1,107 @@
+<topupRequestCollection xmlns="http://namespace.oos.online.octopus.com.hk/mls/" documentTime="DocumentTime">
+        <topupRequest>
+            <requester id="id">
+                <name default="default" xml:lang="cn">name</name>
+            </requester>
+            <requestId>requestId</requestId>
+            <requestTime>2015-08-13T03:00:00+08:00</requestTime>
+            <expiryTime>2015-08-13T04:00:00+08:00</expiryTime>
+            <businessDate>2015-08-13</businessDate>
+            <amount>1</amount>
+            <currency code="">
+                <exchangeRate></exchangeRate>
+                <localAmount></localAmount>
+            </currency>
+            <returnUrl>returnUrl</returnUrl>
+            <statusEnquiryUrl>statusEnquiryUrl</statusEnquiryUrl>
+            <codeId>123456</codeId>
+        </topupRequest>
+    </topupRequestCollection>
+
+
+
+/*--------------------------------------------结构体定义---------------------------------------------------------------*/
+
+
+// todo step 1
+    <paymentRequestCollection
+	xmlns="http://namespace.oos.online.octopus.com.hk/transaction/" documentTime="2017-11-23T19:33:19.409+08:00">
+	<paymentRequest>
+		<gatewayId>196030</gatewayId>
+		<gatewayRef>PG20150813030000001</gatewayRef>
+		<merchantId>196031</merchantId>
+		<expiryTime>2017-11-23T19:43:19.409+08:00</expiryTime>
+		<businessDate>2015-08-13</businessDate>
+		<amount>1000</amount>
+		<currency code="USD">
+			<exchangeRate>7.8</exchangeRate>
+			<localAmount>128.20512</localAmount>
+		</currency>
+		<mpos>1</mpos>
+		<returnUrl>https://payment.example.octopus.com.hk/result</returnUrl>
+	</paymentRequest>
+</paymentRequestCollection>
+// todo step 2
+/*--------------------------------------------结构体定义---------------------------------------------------------------*/
+<signedContent
+	xmlns="http://namespace.oos.online.octopus.com.hk/mls/">
+	<content>PHBheW1lbnRSZXF1ZXN0Q29sbGVjdGlvbiB4bWxucz0iaHR0cDovL25hbWVzcGFjZS5vb3Mub25saW5lLm9jdG9wdXMuY29tLmhrL3RyYW5zYWN0aW9uLyIgZG9jdW1lbnRUaW1lPSIyMDE3LTExLTIzVDE5OjMzOjE5LjQwOSswODowMCI+PHBheW1lbnRSZXF1ZXN0PjxnYXRld2F5SWQ+MTk2MDMwPC9nYXRld2F5SWQ+PGdhdGV3YXlSZWY+UEcyMDE1MDgxMzAzMDAwMDAwMTwvZ2F0ZXdheVJlZj48bWVyY2hhbnRJZD4xOTYwMzE8L21lcmNoYW50SWQ+PGV4cGlyeVRpbWU+MjAxNy0xMS0yM1QxOTo0MzoxOS40MDkrMDg6MDA8L2V4cGlyeVRpbWU+PGJ1c2luZXNzRGF0ZT4yMDE1LTA4LTEzPC9idXNpbmVzc0RhdGU+PGFtb3VudD4xMDAwPC9hbW91bnQ+PGN1cnJlbmN5IGNvZGU9IlVTRCI+PGV4Y2hhbmdlUmF0ZT43Ljg8L2V4Y2hhbmdlUmF0ZT48bG9jYWxBbW91bnQ+MTI4LjIwNTEyPC9sb2NhbEFtb3VudD48L2N1cnJlbmN5PjxtcG9zPjE8L21wb3M+PHJldHVyblVybD5odHRwczovL3BheW1lbnQuZXhhbXBsZS5vY3RvcHVzLmNvbS5oay9yZXN1bHQ8L3JldHVyblVybD48L3BheW1lbnRSZXF1ZXN0PjwvcGF5bWVudFJlcXVlc3RDb2xsZWN0aW9uPg==
+    </content>
+	<signature signerId="196030" keyId="1">
+    QcSqjqAzhL3Uatmb8Qp4D/lfPr4XD+z6GuU63om5h0oXX4P3D0+2144A6HsMjZ7QPEjQpQ/hW7TIk6yJUZp1bZLdG3BJ9gfV0FnqmFacI5YiMS+U6RoWuSZ/qkn/CKj4k3IRjm8ra6EadppfuKnnoM6EL3/PAmsc3NCSsq3YRzKEF6VbaRdy67+X8X5SqGDUzBvdPTsagOGn3GXwnCBpoFN9EDXRiM1zsfKNCRrZ2v1mAfdCsrQxYLy6mA8Db9YTN1NbJsnEELXQtTdEIsqS2s7gkwVg2tqvsZgBk+x2sizv8kDNwev002DI+92ILyuh6CQSU57hAiBIVILPA9EscQ==
+    </signature>
+</signedContent>
+
+<SignedContent xmlns="http://namespace.oos.online.octopus.com.hk/mls/">
+	<content>PHBheW1lbnRSZXF1ZXN0Q29sbGVjdGlvbiB4bWxucz0iaHR0cDovL25hbWVzcGFjZS5vb3Mub25saW5lLm9jdG9wdXMuY29tLmhrL3RyYW5zYWN0aW9uLyIgZG9jdW1lbnRUaW1lPSIyMDE3LTExLTIzVDE5OjMzOjE5LjQwOSswODowMCI+PHBheW1lbnRSZXF1ZXN0PjxnYXRld2F5SWQ+MTk2MDMwPC9nYXRld2F5SWQ+PGdhdGV3YXlSZWY+UEcyMDE1MDgxMzAzMDAwMDAwMTwvZ2F0ZXdheVJlZj48bWVyY2hhbnRJZD4xOTYwMzE8L21lcmNoYW50SWQ+PGV4cGlyeVRpbWU+MjAxNy0xMS0yM1QxOTo0MzoxOS40MDkrMDg6MDA8L2V4cGlyeVRpbWU+PGJ1c2luZXNzRGF0ZT4yMDE1LTA4LTEzPC9idXNpbmVzc0RhdGU+PGFtb3VudD4xMDAwPC9hbW91bnQ+PGN1cnJlbmN5IGNvZGU9IlVTRCI+PGV4Y2hhbmdlUmF0ZT43Ljg8L2V4Y2hhbmdlUmF0ZT48bG9jYWxBbW91bnQ+MTI4LjIwNTEyPC9sb2NhbEFtb3VudD48L2N1cnJlbmN5PjxtcG9zPjE8L21wb3M+PHJldHVyblVybD5odHRwczovL3BheW1lbnQuZXhhbXBsZS5vY3RvcHVzLmNvbS5oay9yZXN1bHQ8L3JldHVyblVybD48L3BheW1lbnRSZXF1ZXN0PjwvcGF5bWVudFJlcXVlc3RDb2xsZWN0aW9uPg==</content>
+	<sognature signerID="196030" keyID="1">
+    UGqMctHfaaPTmdVJUgzrnvYVZIa1eIEOLkC0FA9LKKRdI0rdY4ULR2EcmMLoFrpV0FKqgpftTTWllSIbxp//h+2vpiYdEhZvLYnV87RuVrZvbvLXiO/23VrrlaxNRErjc/vi2A3J/cC4F8x0XCS/Kzp8tELdBkavTMi7A6QXLT86OE6W8nscOILIXJ4DqBdIE7uqrhSYT8GcpDjUcW2Xc8n66x6iEXLC0eYMxuMhVsPjsTpsTi/jWkYQMGmtwLlz0Lc8TAdCxiLHwhAxqsM6poLXJx/UG6BxcKh8GBKw/EZvrAZ6fdpBmNpOouJYgwS4GHMbIP7CT6QZH7xHNI8xAQ==
+    </sognature>
+</SignedContent>
+/*--------------------------------------------结构体定义---------------------------------------------------------------*/
+
+<encryptedContent
+	xmlns="http://namespace.oos.online.octopus.com.hk/mls/">
+	<iv>kiQQ6gZkAy0pwgEr</iv>
+	<ciphertext>
+        QLMUvCR1jQ5DIPbNWCh/OkrVy+TDAhVBy2i/BqJyE0KgAfI5bzhWcUj4Tp+rIP0Fq+Ivd4WEl4tktuiHX2BErACmIgyCY/sLitN87jqPiC6D3YeZdYpfoKb65IgvP1nN+nGgKyjuY+yO4Ubdz/VmKF+CIQmqouF9RLQW0hQUlLM45y+X1vS9bNncXPah5OPHyuoecC69gl8gcWAuR5Fo80YnBsVlVgu/i5P+3IdWFpUHJ1tHe3+5XUzfl3/Z7LAtu5HiOgfWAvfYNk3aSmQVNoOU7d81vubxnFIX4vPhFISuRonuY2DCxqWm6YLWOsQ3Q54SjVk8jilUqkQivAf1QgjTPGIBmido5EUx5FMJ6w52T1S794jOkN0KT8VWsMkpJ+6V5FbotyDLHZ5j4XEtLI+76r22C6JMMLNcJMujfhJUhgM/lQ5a7gZIbXEDEICKiTmgOmRmyvK0kAl3gsFgDwavut0tPLxeQCNYypSZS69lp/owi2fYWFgksFXW1ZDjWUe1uBv9FVgCxX3mD0lQc9OcF+jZmixU2l6Z2t7eWqGrE92NoA86yxxTjE9Ndhh5mvpiFXnTP82BcMG97zxDXykqkyc/kkabrSB23ckebONHbHKiYnujMNAAOpvdFac/2IeyVRdMeVN5v1kg4GLY9goD5CONaKCOtGWHUlkYVrp4OiBsKWdSospOrzy1xTLLn/LLHTqcaq5RF8+ijeqgtxyHnGm+9dXt96ta+mS3HA5wr1BBelTDbs1O0uo9B9p8j1a9dIRfj4sWJOhHhUQWjQtmUjeqy3p4JdgWxdwixV2/WQ/a1baO5oQB7KvGReAWXblAv4cAz0QDZvI0nI0O9f73BnLIr+JDbNeg3xNi3wb3R7qhAVG0L5/JbehnsIi2IsPq2wvZ7zVjrBeCnKTz/JDnN3P3KWWifUmaA7H++S4S/8GIp/12iFUbXUH2elzbMH7WrGyNSXBOy4evZxvSo6eaSugqJoLAQDepKc2BjMbtB4biZ9Gydv5txzXDrhHpmrKBrsN3m1yGKS/M5i54YENHgujIq3z0O+1ljVHtnehuIkbGg7i98Xh/kcWeRi3nxT1cpndHi2PtoN0wA1x6FWmNDJJbbl4vPpXKlIFcmDvSizXeySuwULu+b/VcA8eJxa3f0p0qaNPGasLh+JHXJZCMcG3QEw6o6e64AGHCC8QMhYdfkkOtOxyt4J87VGWsCc1IUgiHV78H0v/siugIXsGdY2/BpzwRNLDESidOh+YMvr+v6gnfkluE/IMpOcGbOZ4G2b1Tkj4GaQjci7JRJFGdhpDKfYrx/yj1spTJ5BUa7qWJxrdu6PvEE6tCXcz8by4GyRF/Qq25lWWAAA8QqCvaX+IJkGLn73VSdkC7VJIYgbvV6PWEBWQTYCQv6IzlEBt9caNkVdZedOqcDigdFNSqZ7CZGgOcsywKRYoyqhFMdWPfEHI8DKpAa+FonhOLvNSJdJ2DBMeqh0q1OjQUBh9jb53B/WLDLQdEXEt4PjMFZ5qDKvvtmagWPURvP88xkJDcT4AMelWBda9ylan/QheV/ZvbHpqov6ysoe3xA2zf37DDJre2wChHJ/RnGPEcSwD9mPGa235d6FJiviuJxqCU3ntjqvHV/qMjT3PWJVVOE+0G07NEfbnjImcQ+FY6uda0+1fzthwHjnBvjBcpvp9x7yTuNqHcSeFN/J1tNXV+OZn6QzlnScJYYQsZuj2EJg==
+    </ciphertext>
+	<authenticationTag>
+        xmghnpCvIYxSScsX/XayZA==
+    </authenticationTag>
+	<encryptedKey keyId="3">
+        OxQpFllYeXfPWPF+y/WLlUNWwirGdW1F8PHIIDssh+l0wu0RwqSmHALD69UsrdqQB5Rzii5bSUs6nwFTBZWddRLmlwEtOwEt7YZ5WfcY+CjL01W/6kfJtnv78gZB2YbJKGtfQNyTrXRLVRJiOpTUsTGjd/LRYXX8nBrM+HKwPaXKgDXnSDE26Og62gYoNewDalL0xr9MQrFhb8iIoDn9/67iWkql7FWXMoqUZhoZ+qinRYRna/XGSYOAO0p0c+GFsyaY0jQI5ibE4ZTKCZKLQBPiVVnoG0XhZLrAonumYAElYVMJOKFtCrOD+rXMYSUKWcPTL5JqfxEv4WRRd3wQwg==
+    </encryptedKey>
+</encryptedContent>
+
+
+
+
+
+
+
+
+
+
+requestObj = paymentRequestCollection{
+		Xmlns:        "http://namespace.oos.online.octopus.com.hk/transaction/",
+		DocumrntTime: "2017-11-23T19:33:19.409+08:00",
+		PaymentRequest: PaymentRequest{
+			GatewayId:    196030,
+			GatewayRef:   "PG20150813030000001",
+			MerchantId:   196031,
+			ExpiryTime:   "2017-11-23T19:43:19.409+08:00",
+			BusinessDate: "2015-08-13",
+			Amount:       1000,
+			Currency: Currency{
+				Code:         "USD",
+				ExchangeRate: 7.8,
+				LocalAmount:  128.20512,
+			},
+			Mpos:      1,
+			ReturnUrl: "https://payment.example.octopus.com.hk/result",
+		},
+	}
+	str, _ := xml.MarshalIndent(requestObj, "", "\t")
+	fmt.Println(string(str))
+	requestObj = paymentRequestCollection{}
