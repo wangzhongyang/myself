@@ -32,17 +32,12 @@ type Wang struct {
 	Age  Int
 }
 
-func main() {
-
-	w := Wang{
-		Name: "000",
-	}
-	filed := "Age"
-	fmt.Println(FieldVoid(w, "Name"))
-	fmt.Println(FieldVoid(w, filed))
-
-	fmt.Println()
-}
+// func main() {
+// 	str := "BINDO_COMMON_TEST_CONFIG_FILE"
+// 	fmt.Println(os.Getenv(str))
+// 	fmt.Println(os.Getenv("GOPATH"))
+// 	fmt.Println(os.LookupEnv(str))
+// }
 
 func FieldVoid(w Wang, field string) bool {
 	s := structs.New(w)

@@ -7,15 +7,11 @@ import (
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
-	"crypto/tls"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
 	"errors"
 	"io"
-	"io/ioutil"
-	"net/http"
-	"strings"
 )
 
 type Encryption struct {
@@ -171,28 +167,29 @@ func (e *Encryption) Encrypt(content []byte) ([]byte, error) {
 // https 请求
 func https(content string) (string, error) {
 
-	var path1 = "/Users/bindo/Downloads/new_keys/"
-	var olt_crt = path1 + "bindo-tls.chained.crt"
-	var tls_Pem = path1 + "tls.key"
-	var urlPath = "https://integration.online.octopus.com.hk:7443/webapi-restricted/payment/request/"
-	urlPath = "https://www.baidu.com"
-	cliCrt, err := tls.LoadX509KeyPair(olt_crt, tls_Pem)
-	if err != nil {
-		return "", err
-	}
+	// var path1 = "/Users/bindo/Downloads/new_keys/"
+	// var olt_crt = path1 + "bindo-tls.chained.crt"
+	// var tls_Pem = path1 + "tls.key"
+	// var urlPath = "https://integration.online.octopus.com.hk:7443/webapi-restricted/payment/request/"
+	// urlPath = "https://www.baidu.com"
+	// cliCrt, err := tls.LoadX509KeyPair(olt_crt, tls_Pem)
+	// if err != nil {
+	// 	return "", err
+	// }
 
-	tr := &http.Transport{
-		TLSClientConfig: &tls.Config{
-			Certificates: []tls.Certificate{cliCrt},
-		},
-	}
-	client := &http.Client{Transport: tr}
-	resp, err := client.Post(urlPath, "application/xml;charset=UTF-8", strings.NewReader("333"))
-	return "", err
-	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return "", err
-	}
-	return string(body), nil
+	// tr := &http.Transport{
+	// 	TLSClientConfig: &tls.Config{
+	// 		Certificates: []tls.Certificate{cliCrt},
+	// 	},
+	// }
+	// client := &http.Client{Transport: tr}
+	// resp, err := client.Post(urlPath, "application/xml;charset=UTF-8", strings.NewReader("333"))
+	// return "", err
+	// defer resp.Body.Close()
+	// body, err := ioutil.ReadAll(resp.Body)
+	// if err != nil {
+	// 	return "", err
+	// }
+	// return string(body), nil
+	return "", nil
 }
