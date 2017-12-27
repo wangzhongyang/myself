@@ -32,6 +32,8 @@ type Wang struct {
 	Age  Int
 }
 
+//
+
 // func main() {
 // 	str := "BINDO_COMMON_TEST_CONFIG_FILE"
 // 	fmt.Println(os.Getenv(str))
