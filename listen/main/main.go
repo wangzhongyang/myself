@@ -19,19 +19,6 @@ func handleConnection(conn net.Conn) {
 }
 
 func main() {
-	//ln, err := net.Listen("tcp", ":18080")
-	//if err != nil {
-	//	panic(err)
-	//}
-	//for {
-	//	conn, err := ln.Accept()
-	//	if err != nil {
-	//		log.Fatal("get client connection error: ", err)
-	//	}
-	//	fmt.Println("------------------")
-	//	handleConnection(conn)
-	//}
-
 	http.HandleFunc("/", foo)
 	http.ListenAndServe(":18080", nil)
 }
@@ -43,6 +30,7 @@ func foo(w http.ResponseWriter, r *http.Request) {
   "success":true
 }
 `
+	w.Header().Set("Content-Type", "application/json")
 	w.Write([]byte(str))
 	go build()
 }

@@ -1,21 +1,19 @@
 #!/bin/sh
 
-#unset GIT_DIR
-#
-#path=$GOPATH"/src/vps"
-#cd $path
-#
-#echo "-------------pwd---------------"
-#pwd
-#echo "-------------git pull---------------"
-#git pull
-#
-#echo "-------------go build---------------"
-#go build
-#
-#echo "-------------restart---------------"
-#supervisorctl restart govps
-#
-#exit 0
+unset GIT_DIR
 
-echo "11111"
+path=$GOPATH"/src/vps"
+cd $path
+
+echo "-------------pwd---------------"
+pwd
+echo "-------------git pull---------------"
+git pull
+
+echo "-------------go build---------------"
+go build
+
+echo "-------------restart---------------"
+supervisorctl restart govps
+
+exit 0
