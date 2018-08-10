@@ -1,0 +1,43 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "VMtKmB8G5idZ2yRoRXPSbNJ3ulE=",
+			"path": "github.com/Pallinder/go-randomdata",
+			"revision": "15df0648130a623e418886f81b2aaecd0a00547b",
+			"revisionTime": "2018-06-16T18:05:21Z"
+		},
+		{
+			"checksumSHA1": "tqqo7DEeFCclb58XbN44WwdpWww=",
+			"path": "golang.org/x/text/encoding",
+			"revision": "cb6730876b985e110843c1842a7a63a63677cf08",
+			"revisionTime": "2018-08-04T18:04:12Z"
+		},
+		{
+			"checksumSHA1": "zeHyHebIZl1tGuwGllIhjfci+wI=",
+			"path": "golang.org/x/text/encoding/internal",
+			"revision": "cb6730876b985e110843c1842a7a63a63677cf08",
+			"revisionTime": "2018-08-04T18:04:12Z"
+		},
+		{
+			"checksumSHA1": "oZ2ULELwcY2qgTcpYWrWGsynTuQ=",
+			"path": "golang.org/x/text/encoding/internal/identifier",
+			"revision": "cb6730876b985e110843c1842a7a63a63677cf08",
+			"revisionTime": "2018-08-04T18:04:12Z"
+		},
+		{
+			"checksumSHA1": "55UdScb+EMOCPr7OW0hCwDsVxpg=",
+			"path": "golang.org/x/text/encoding/simplifiedchinese",
+			"revision": "cb6730876b985e110843c1842a7a63a63677cf08",
+			"revisionTime": "2018-08-04T18:04:12Z"
+		},
+		{
+			"checksumSHA1": "ziMb9+ANGRJSSIuxYdRbA+cDRBQ=",
+			"path": "golang.org/x/text/transform",
+			"revision": "cb6730876b985e110843c1842a7a63a63677cf08",
+			"revisionTime": "2018-08-04T18:04:12Z"
+		}
+	],
+	"rootPath": "myself"
+}

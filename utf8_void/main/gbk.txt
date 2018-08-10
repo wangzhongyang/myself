@@ -1,0 +1,7 @@
+go test -v -tags test $(pkg) -run="$(run)" | tee -a ./test.results
+
+
+
+
+		cat ./test.results | grep "FAIL"
+		cat ./test.results | grep -A 5 "Failures:"
