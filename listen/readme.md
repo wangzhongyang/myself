@@ -6,5 +6,5 @@ restart-goVps.log 文件会记录执行过程
 2、请求到达18080端口，执行restart.sh
 3、编译信息会在文件restart-goVps.log上。
 
-存在的问题：
-无法返回正确的数据
+运行：
+go build -o listen
