@@ -2,10 +2,12 @@ package main
 
 import (
 	"encoding/hex"
-	"math/rand"
-
 	"fmt"
-	"strconv"
+	"math/rand"
+	"regexp"
+	"sort"
+
+	"github.com/Pallinder/go-randomdata"
 )
 
 type ComplexSearchResult struct {
@@ -14,20 +16,36 @@ type ComplexSearchResult struct {
 	Name    string `json:"name"`
 }
 
+type Wang []int
+
+func (s Wang) Len() int           { return len(s) }
+func (s Wang) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
+func (s Wang) Less(i, j int) bool { return s[i] < s[j] }
+
 func main() {
-	//	str := `
-	//[{"id":631388,"store_id":176,"name":"Natural Balance Dry Cat Food Indoor Ultra Premium Formula 6Lb"},{"id":632556,"store_id":176,"name":"Untitled - 816587010772"},{"id":633497,"store_id":176,"name":"Honest Kitchen KEEN 2lb"},{"id":633504,"store_id":176,"name":"ACANA LI Lamb \u0026 Apple 4.4#"},{"id":634150,"store_id":176,"name":"Untitled - 667902164188"},{"id":634152,"store_id":176,"name":"Untitled - 667902172442"},{"id":598258,"store_id":5417,"name":"Blue Buffalo - Blue™ Wilderness™ Wild Bites™ Dog Trail Treat™ Salmon 4oz"},{"id":600337,"store_id":176,"name":"Four Paws® Wee Wee Pads® Puppy Housebreaking Pads 22\" X 23\" 10pads"},{"id":602045,"store_id":5417,"name":"Green Travel Cup - Small"},{"id":602863,"store_id":176,"name":"Old Mother Hubbard Classic Crunchy P-Nuttier Oven-Baked Dog Biscuits Mini 5Oz"}]
-	//`
-	//	var arr []ComplexSearchResult
-	//	json.Unmarshal([]byte(str), &arr)
-	//	fmt.Println(arr)
-	//	m := make(map[int][]int)
-	//	for _, v := range arr {
-	//		m[v.StoreID] = append(m[v.StoreID], v.ID)
-	//
-	//	}
-	//	fmt.Println(m)
-	fmt.Println(strconv.Atoi("123455A"))
+	details(" a o nnn w")
+	a := Wang{1, 2, 44, 5, 77, 55, 31}
+	sort.Sort(a)
+	fmt.Println(a)
+
+	for i := 0; i < 20; i++ {
+
+		str := randomdata.Letters(24)
+		fmt.Println(str, "========]", len(str))
+	}
+
+	fmt.Println("\uFFFD")
+
+	bytes := make([]byte, 2014)
+	fmt.Println(len(bytes), cap(bytes), string(bytes[0]))
+	/***
+	   sort.Sort(a)
+	   notification.SendToDevice(a)
+	   NewPlatform() Pltform {
+	}
+	*/
+
+	SayHello("this is message")
 }
 
 func randomHex(n int) (string, error) {
@@ -36,4 +54,15 @@ func randomHex(n int) (string, error) {
 		return "", err
 	}
 	return hex.EncodeToString(bytes), nil
+}
+
+func details(str string) string {
+	str = regexp.MustCompile(" ").ReplaceAllString(str, "+")
+	fmt.Println(str)
+	return str
+}
+
+func SayHello(msg string) error {
+	fmt.Println("send message is :", msg)
+	return nil
 }

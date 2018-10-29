@@ -1,13 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func main() {
 	//arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 10}
 	//fmt.Println(RemoveRepByLoop(arr))
-
+	var a int
+	a = 1000000000000000000
+	fmt.Println(a)
 	arr := []int{1, 2, 3, 4, 5, 6}
 	fmt.Println(DelByValue(arr, 3))
+
+	fmt.Println(time.Now().Format("2006-01-02T15:04:05Z07:00"))
 
 }
 func RemoveRepByLoop(slc []int) []int {
