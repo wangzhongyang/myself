@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 func main() {
 	a, b := []int{1, 2, 3, 4}, []int{3, 4, 5, 6, 7}
@@ -11,6 +14,20 @@ func main() {
 	fmt.Println(len(c))
 	key := "4036263823jVSfRiRQeDUVTyGdCnbcBA=="
 	fmt.Println(key[10:])
+
+	str := `{"sid":10001,"oid":10002,"n":"20180010000001" ,"pa":"10.02","et":1380000000, "of": 1}`
+	var mq MqMessage
+	fmt.Println(json.Unmarshal([]byte(str), &mq))
+	fmt.Printf("mq:		\n%+v\n", mq)
+}
+
+type MqMessage struct {
+	Sid        int    `json:"sid"`
+	Oid        int    `json:"oid"`
+	N          string `json:"n"`
+	Et         int64  `json:"et"`
+	PaidAmount string `json:"pa"`
+	PushMethod int    `json:"push_method"`
 }
 
 func Different(a, b []int) ([]int, []int) {

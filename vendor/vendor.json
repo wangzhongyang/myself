@@ -9,6 +9,12 @@
 			"revisionTime": "2018-06-16T18:05:21Z"
 		},
 		{
+			"checksumSHA1": "cyejI0bcXBrdCmmbBNVzMNx7I80=",
+			"path": "github.com/gomodule/redigo/redis",
+			"revision": "e8fc0692a7e26a05b06517348ed466349062eb47",
+			"revisionTime": "2018-10-26T00:15:55Z"
+		},
+		{
 			"checksumSHA1": "YtkqO9PyythyZEqlbxqcF1Jq+f0=",
 			"path": "github.com/jroimartin/gocui",
 			"revision": "c055c87ae801372cd74a0839b972db4f7697ae5f",

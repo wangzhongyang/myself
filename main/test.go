@@ -6,6 +6,7 @@ import (
 	"math/rand"
 	"regexp"
 	"sort"
+	"strings"
 
 	"github.com/Pallinder/go-randomdata"
 )
@@ -38,6 +39,9 @@ func main() {
 
 	bytes := make([]byte, 2014)
 	fmt.Println(len(bytes), cap(bytes), string(bytes[0]))
+
+	str := "王忠洋aaa"
+	fmt.Println("汉子长度：		", strings.Count(str, "")-1)
 	/***
 	   sort.Sort(a)
 	   notification.SendToDevice(a)
