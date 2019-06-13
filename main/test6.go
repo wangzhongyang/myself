@@ -2,8 +2,14 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"time"
 )
+
+type Test6 struct {
+	Name string
+	Age  int
+}
 
 func main() {
 	//arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 8, 7, 6, 5, 4, 3, 2, 10}
@@ -16,7 +22,16 @@ func main() {
 
 	fmt.Println(time.Now().Format("2006-01-02T15:04:05Z07:00"))
 
+	f := 1.12345678
+	fmt.Println("精度：		", Round(f, 0))
+
 }
+
+func Round(f float64, n int) float64 {
+	n10 := math.Pow10(n)
+	return math.Trunc((f+0.5/n10)*n10) / n10
+}
+
 func RemoveRepByLoop(slc []int) []int {
 	result := make([]int, 0) // 存放结果
 	for i := range slc {

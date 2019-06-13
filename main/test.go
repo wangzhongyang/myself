@@ -21,13 +21,14 @@ type Wang []int
 
 func (s Wang) Len() int           { return len(s) }
 func (s Wang) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-func (s Wang) Less(i, j int) bool { return s[i] < s[j] }
+func (s Wang) Less(i, j int) bool { return s[i] > s[j] }
 
 func main() {
 	details(" a o nnn w")
-	a := Wang{1, 2, 44, 5, 77, 55, 31}
+	c := []int{1, 2, 44, 5, 77, 55, 31}
+	a := Wang(c)
 	sort.Sort(a)
-	fmt.Println(a)
+	fmt.Println("a:			", a)
 
 	for i := 0; i < 20; i++ {
 

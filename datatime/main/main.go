@@ -27,5 +27,12 @@ func main() {
 	h, _ := time.ParseDuration("-2h")
 	fmt.Println(time.Now().Format("2006-01-02 15:04:05"), time.Now().Add(h).Format("2006-01-02 15:04:05"))
 
-	//
+	// 时区转换
+	stringToTime2, _ := time.ParseInLocation("2006-01-02 15:04:05", "2018-09-09 16:20:37", time.Local)
+	h, _ = time.ParseDuration("8h")
+	fmt.Println("时区转换:		", stringToTime2.Add(h).Format("2006-01-02 15:04:05"))
+
+	// 时间比较
+	b, _ := time.ParseInLocation("2006-01-02 15:04:05", "2015-03-10 11:00:00", time.Local)
+	fmt.Println("时间比较:		", now.Before(b))
 }
