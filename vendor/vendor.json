@@ -147,6 +147,18 @@
 			"revisionTime": "2019-03-02T08:00:47Z"
 		},
 		{
+			"checksumSHA1": "HbiUTYfd912MhXZbh58xLs1CV0Q=",
+			"path": "github.com/olivere/elastic",
+			"revision": "9a5942842e80bd3c67c6bf9385a32a6c29eba0e4",
+			"revisionTime": "2019-06-08T09:50:52Z"
+		},
+		{
+			"checksumSHA1": "AmcqvKDAUGvVsrf8NDCQ/B8cMj4=",
+			"path": "github.com/olivere/elastic/uritemplates",
+			"revision": "9a5942842e80bd3c67c6bf9385a32a6c29eba0e4",
+			"revisionTime": "2019-06-08T09:50:52Z"
+		},
+		{
 			"checksumSHA1": "JPPv7nnUo01Mlyqb0g+Qk5/URR4=",
 			"path": "github.com/streadway/amqp",
 			"revision": "70e15c650864f4fc47f5d3c82ea117285480895d",
