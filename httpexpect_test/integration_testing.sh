@@ -4,9 +4,9 @@
 test_path="."
 # 测试分支
 git_branch="master"
-branch_hash=`git rev-parse $git_branch`
 # 代码相关
 git checkout $git_branch && git pull
+branch_hash=`git rev-parse $git_branch`
 echo "=================about brach begin====================="
 git log -1
 echo "=================about brach end  ====================="
