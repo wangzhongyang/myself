@@ -1,5 +1,5 @@
 #!/bin/bash
-#set -v
+set -v
 # 测试目录
 test_path="."
 # 测试分支
