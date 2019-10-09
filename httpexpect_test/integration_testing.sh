@@ -1,14 +1,14 @@
 #!/bin/bash
-set -v
+#set -v
 
-# use pipe
-pipe=/tmp/pipe-integration-testing
-trap "echo 'over';rm -f $pipe;exit 0" 1 2
-pip=$$
-echo "pip:$pip"
+# use fifo
+fifo=/tmp/fifo-integration-testing
+trap "echo 'over',$(date +%H:%M:%S);rm -f $fifo;exit 0" 1 2 15
+pid_num=$$
+echo "pid_num:$pid_num"
 
-if [[ ! -p $pipe ]]; then
-  mkfifo $pipe
+if [[ ! -p $fifo ]]; then
+  mkfifo $fifo
 fi
 
 # 测试目录
@@ -28,10 +28,11 @@ echo "=================about branch end  ====================="
 log_name="$(date +%F)_integration_testing.log"
 is_pass=0
 touch "$log_name"
+# write fifo
+echo "integration_testing:$pid_num" > $fifo
+
 while true; do
-  # write pipe
-   echo "integration_testing:$pip" > $pipe
-   # 检查是否有代码更新
+ # 检查是否有代码更新
   branch_hash_temp=`git rev-parse $git_branch`
   if [ "$branch_hash_temp" != "$branch_hash" ];then
     # 有代码更新，重新pull代码
@@ -46,17 +47,18 @@ while true; do
   else
     # go test
     echo "=================================integration testing strat: $(date +%H:%M:%S)=======================================" >> $log_name
-    ## read pipe
-    read -r line < $pipe
+    ## read fifo
+    read -r line < $fifo
     if [ $? -ne 0 ]; then
-      echo "=================================integration testing read pipe failed: $(date +%H:%M:%S)=======================================" >> $log_name
+      echo "=================================integration testing read fifo failed: $(date +%H:%M:%S)=======================================" >> $log_name
       break
     fi
     git log -1 >> "$log_name"
     go clean -testcache
     go test -v -failfast $test_path >> "$log_name"
     is_pass=$?
-    echo "integration_testing:$pip" > $pipe
+    # write fifo
+    echo "integration_testing:$pid_num" > $fifo
     echo "=================================integration testing over: $(date +%H:%M:%S)========================================" >> $log_name
 
     if [ $is_pass -eq 0 ]; then

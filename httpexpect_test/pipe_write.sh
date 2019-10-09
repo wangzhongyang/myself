@@ -1,17 +1,17 @@
 #!/bin/bash
 
-pipe=/tmp/testpipe
-trap "echo 'over';rm -f $pipe;exit 0" 2
+fifo=/tmp/testfifo
+trap "echo 'over';rm -f $fifo;exit 0" 2
 
-if [[ ! -p $pipe ]]; then
-  mkfifo $pipe
+if [[ ! -p $fifo ]]; then
+  mkfifo $fifo
 fi
 
 echo "begin sleep"
 sleep 10s
-echo "hello from $$" > $pipe
+echo "hello from $$" > $fifo
 
 while [ true ]; do
-    echo "on pipe write:$(date +%H:%M:%S)"
-    sleep 1s
+    echo "on fifo write:$(date +%H:%M:%S)"
+    sleep 1m
 done

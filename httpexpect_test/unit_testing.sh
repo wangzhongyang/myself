@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# use pipe
-pipe=/tmp/pipe-unit-testing
-trap "echo 'over';rm -f $pipe;exit 0" 1 2
-pip=$$
+# use fifo
+fifo=/tmp/fifo-unit-testing
+trap "kill -SIHINI $(jobs -p);echo 'over';rm -f $fifo;exit 0" 1 2 15
+pid_num=$$
 
-if [[ ! -p $pipe ]]; then
-  mkfifo $pipe
+if [[ ! -p $fifo ]]; then
+  mkfifo $fifo
 fi
 
 # 测试目录
@@ -24,8 +24,8 @@ log_name="$(date +%F)_unit_testing.log"
 touch "$log_name"
 
 while true; do
-  # write pipe
-   echo "unit_testing:$pip" > $pipe
+  # write fifo
+   echo "unit_testing:$pid_num" > $fifo
    # 检查是否有代码更新
   branch_hash_temp=`git rev-parse $git_branch`
   if [ "$branch_hash_temp" != "$branch_hash" ];then
@@ -39,15 +39,15 @@ while true; do
     continue
   fi
   echo "=================================unit testing strat: $(date +%H:%M:%S)=======================================" >> $log_name
-  ## read pipe
-    read -r line < $pipe
+  ## read fifo
+    read -r line < $fifo
     if [ $? -ne 0 ]; then
-      echo "=================================unit testing read pipe failed: $(date +%H:%M:%S)=======================================" >> $log_name
+      echo "=================================unit testing read fifo failed: $(date +%H:%M:%S)=======================================" >> $log_name
       break
     fi
   git log -1 >> "$log_name"
   go clean -testcache
   go test -v -failfast $test_path"/"... >> "$log_name"
-  echo "integration_testing:$pip" > $pipe
+  echo "integration_testing:$pid_num" > $fifo
   echo "=================================unit testing over: $(date +%H:%M:%S)========================================" >> $log_name
 done
