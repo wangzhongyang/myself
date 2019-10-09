@@ -13,5 +13,19 @@ test_path="."
 #  fi
 #
 #done
-go test -v -failfast ./...
-echo $?
+
+echoFun(){
+  case $1 in
+  1)
+    echo 1
+  ;;
+  2)
+    echo 2
+  ;;
+  3)
+    echo 3
+  ;;
+  esac
+}
+
+echoFun $1

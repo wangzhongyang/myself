@@ -9,10 +9,10 @@ do_unit_test:
 	sh ./unit_testing.sh &
 
 stop_test:
-	sh ./stop_unit_testing.sh &
-	sh ./stop_integration_testing.sh &
+	sh ./stop_test.sh 1
+	sh ./stop_test.sh 2
 stop_integration_test:
-	sh ./stop_integration_testing.sh &
+	sh ./stop_test.sh 1
 
 stop_unit_test:
-	sh ./stop_unit_testing.sh &
+	sh ./stop_test.sh 2

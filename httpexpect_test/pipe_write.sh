@@ -12,6 +12,6 @@ sleep 10s
 echo "hello from $$" > $pipe
 
 while [ true ]; do
-    echo "on pipe write"
+    echo "on pipe write:$(date +%H:%M:%S)"
     sleep 1s
 done
