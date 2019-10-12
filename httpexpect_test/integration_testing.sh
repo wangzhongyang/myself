@@ -3,7 +3,7 @@
 
 # use fifo
 fifo=/tmp/fifo-integration-testing
-trap "echo 'over',$(date +%H:%M:%S);rm -f $fifo;exit 0" 1 2 15
+trap "echo 'integration_test over';rm -f $fifo;exit 0" 1 2 15
 pid_num=$$
 echo "pid_num:$pid_num"
 
@@ -12,16 +12,18 @@ if [[ ! -p $fifo ]]; then
 fi
 
 # 测试目录
-test_path="."
+test_path="integration_test"
 # 测试分支
-git_branch="master"
+git_branch="cretae_testing_module"
 # 代码相关
+cd ..
 git checkout $git_branch
 git pull
 branch_hash=`git rev-parse $git_branch`
 echo "=================about branch begin====================="
 git log -1
 echo "=================about branch end  ====================="
+cd test
 
 
 #exit 0
@@ -38,7 +40,9 @@ while true; do
     # 有代码更新，重新pull代码
     branch_hash=$branch_hash_temp
     unset branch_hash_temp
+    cd ..
     git pull
+    cd test
   elif [ $is_pass -eq 1 ]; then
     # 没有代码更新且上次测试未通过
     echo "=========================no update and last test fail,now: $(date +%H:%M:%S),sleep 1m===============================" >> $log_name
@@ -55,7 +59,7 @@ while true; do
     fi
     git log -1 >> "$log_name"
     go clean -testcache
-    go test -v -failfast $test_path >> "$log_name"
+    go test -v -failfast ."/"$test_path"/"... >> "$log_name"
     is_pass=$?
     # write fifo
     echo "integration_testing:$pid_num" > $fifo

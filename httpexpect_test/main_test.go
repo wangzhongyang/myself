@@ -19,28 +19,28 @@ func TestBetter(t *testing.T) {
 	e := httpexpect.New(t, server.URL)
 
 	cases := []struct {
-		caseName string
-		param    string
-		repKey   string
-		repValue string
+		caseName  string
+		param     string
+		respKey   string
+		respValue string
 	}{
 		{
-			caseName: "test value",
-			param:    "test",
-			repKey:   "value",
-			repValue: "test",
+			caseName:  "test value",
+			param:     "test",
+			respKey:   "value",
+			respValue: "test",
 		},
 		{
-			caseName: "test failed",
-			param:    "蔡徐坤",
-			repKey:   "status",
-			repValue: "唱跳rap和篮球",
+			caseName:  "test failed",
+			param:     "蔡徐坤",
+			respKey:   "status",
+			respValue: "唱跳rap和篮球",
 		},
 		{
-			caseName: "test no value",
-			param:    "蔡徐坤",
-			repKey:   "status",
-			repValue: "no value",
+			caseName:  "test no value",
+			param:     "蔡徐坤",
+			respKey:   "status",
+			respValue: "no value",
 		},
 	}
 
@@ -49,7 +49,7 @@ func TestBetter(t *testing.T) {
 			e.GET(fmt.Sprintf("/user/%s", c.param)).Expect().Status(http.StatusOK).
 				JSON().Object().
 				ContainsKey("user").ValueEqual("user", c.param).
-				ContainsKey(c.repKey).ValueEqual(c.repKey, c.repValue)
+				ContainsKey(c.respKey).ValueEqual(c.respKey, c.respValue)
 		})
 	}
 }
