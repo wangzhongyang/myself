@@ -8,6 +8,10 @@ import (
 )
 
 func main() {
+	SyncOnce()
+}
+
+func A() {
 	var wg sync.WaitGroup
 	errorChan := make(chan error)
 	go func() {
@@ -32,8 +36,4 @@ func main() {
 		fmt.Println("error is :		", err.Error())
 	}
 	fmt.Println("main 2")
-}
-
-func sendError() error {
-	return errors.New("send error")
 }

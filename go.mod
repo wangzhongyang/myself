@@ -15,6 +15,7 @@ require (
 	github.com/jinzhu/gorm v1.9.11
 	github.com/mattn/go-sqlite3 v1.11.0
 	github.com/moul/http2curl v1.0.0 // indirect
+	github.com/satori/go.uuid v1.2.0
 	github.com/streadway/amqp v0.0.0-20190827072141-edfb9018d271
 	github.com/valyala/fasthttp v1.5.0 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20190905194746-02993c407bfb // indirect

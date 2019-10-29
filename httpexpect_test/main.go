@@ -52,7 +52,6 @@ func setupRouter() *gin.Engine {
 			c.JSON(http.StatusOK, gin.H{"status": "ok"})
 		}
 	})
-
 	return r
 }
 

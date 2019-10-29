@@ -16,3 +16,6 @@ stop_integration_test:
 
 stop_unit_test:
 	sh ./stop_test.sh 2
+
+clear_db:
+	sh clear_db.sh province_warehouse_test
