@@ -16,7 +16,7 @@ var (
 
 func main() {
 	path := "/Users/wangzhongyang/go/src/myself/forza4-backup"
-	_ = Compress(path)
+	fmt.Println(Compress(path))
 	delete()
 }
 
@@ -121,13 +121,14 @@ func delete() {
 		if strings.Contains(file.Name(), "forza4-backup-") {
 			fmt.Println("file name: ", file.Name())
 			count += 1
-		}
-		if count > 5 {
-			removeName := pathRoot + "/" + file.Name()
-			if err := os.Remove(removeName); err != nil {
-				panic(fmt.Errorf("%s remove file failed, file name:%s, error:%w", funcName, removeName, err))
+			if count > 5 {
+				removeName := pathRoot + "/" + file.Name()
+				if err := os.Remove(removeName); err != nil {
+					panic(fmt.Errorf("%s remove file failed, file name:%s, error:%w", funcName, removeName, err))
+				}
 			}
 		}
+
 	}
 }
 
@@ -135,4 +136,4 @@ type filesInfoType []os.FileInfo
 
 func (s filesInfoType) Len() int           { return len(s) }
 func (s filesInfoType) Swap(i, j int)      { s[i], s[j] = s[j], s[i] }
-func (s filesInfoType) Less(i, j int) bool { return s[i].Name() < s[j].Name() }
+func (s filesInfoType) Less(i, j int) bool { return s[i].Name() > s[j].Name() }

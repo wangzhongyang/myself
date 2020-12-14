@@ -2,73 +2,44 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net"
-	"net/http"
-	"os"
-	"os/exec"
-	"path/filepath"
-	"strings"
-	"time"
 )
 
-func handleConnection(conn net.Conn) {
-	str := exec_shell(GetCurrentDirectory())
-	setLog(str)
-	conn.Close()
-}
-
 func main() {
-	http.HandleFunc("/", foo)
-	http.ListenAndServe(":18080", nil)
-}
-
-func foo(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Server", "A Go Web Server")
-	w.WriteHeader(http.StatusOK)
-	str := `{
-  "success":true
-}
-`
-	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(str))
-	go build()
-}
-
-func build() {
-	fmt.Println("-------build--------")
-	res := exec_shell(GetCurrentDirectory())
-	setLog(res)
-}
-
-func exec_shell(path string) string {
-	cmd := exec.Command(path + "/" + "restart.sh") //初始化Cmd
-	out, err := cmd.Output()                       //运行脚本
-	if nil != err {
-		fmt.Println("cmd output:		", err.Error())
-	}
-	err = cmd.Wait() //等待执行完成
-	if nil != err {
-		fmt.Println("cmd wait:		", err.Error())
-	}
-	return string(out)
-}
-func setLog(str string) {
-	// 定义一个文件
-	fileName := "restart-goVps.log"
-	// 文件名，只写|追加|创建，权限
-	f, err := os.OpenFile(fileName, os.O_WRONLY|os.O_APPEND|os.O_CREATE, 0666)
+	ln, err := net.Listen("tcp", ":8080")
 	if err != nil {
-		fmt.Println("can't open file")
+		panic("listen tcp failed," + err.Error())
 	}
-	defer f.Close()
-	str = fmt.Sprintf("-----------------%s--------------------\n%s", time.Now().Format("2006-01-02 15:04:05"), str)
-	_, _ = f.WriteString(str)
-}
-func GetCurrentDirectory() string {
-	dir, err := filepath.Abs(filepath.Dir(os.Args[0])) //返回绝对路径  filePath.Dir(os.Args[0])去除最后一个元素的路径
+	go func() {
+		for {
+			conn, err := ln.Accept()
+			if err != nil {
+				panic("conn failed TCP," + err.Error())
+			}
+			_, _ = conn.Write([]byte("this is TCP"))
+			_ = conn.Close()
+		}
+	}()
+
+	ln2, err := net.ListenPacket("udp", ":8080")
 	if err != nil {
-		log.Fatal(err)
+		panic("listen UDP failed," + err.Error())
 	}
-	return strings.Replace(dir, "\\", "/", -1) //将\替换成/
+	defer ln2.Close()
+	for {
+		buf := make([]byte, 1024)
+		_, addr, err := ln2.ReadFrom(buf)
+		if err != nil {
+			continue
+		}
+		fmt.Println(addr.String())
+		if _, err := ln2.WriteTo([]byte("this is UDP\n"), addr); err != nil {
+			fmt.Println("udp write failed," + err.Error())
+		}
+	}
+}
+
+func handleConnectionTcp(conn net.Conn) {
+	_, _ = conn.Write([]byte("this is TCP"))
+	_ = conn.Close()
 }

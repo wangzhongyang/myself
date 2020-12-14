@@ -7,9 +7,9 @@ import (
 	"time"
 )
 
-func main() {
-	SyncOnce()
-}
+//func main() {
+//	SyncOnce()
+//}
 
 func A() {
 	var wg sync.WaitGroup

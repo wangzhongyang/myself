@@ -16,6 +16,7 @@ func main() {
 		fmt.Println("conn error:	" + err.Error())
 	}
 	defer client.Close()
+
 	client.Do("set", "test", "30")
 	fmt.Println(redis.Int(client.Do("get", "test")))
 	arr := []int{1, 2, 3}
