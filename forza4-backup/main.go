@@ -119,7 +119,6 @@ func delete() {
 	count := 0
 	for _, file := range filesInfo {
 		if strings.Contains(file.Name(), "forza4-backup-") {
-			fmt.Println("file name: ", file.Name())
 			count += 1
 			if count > 5 {
 				removeName := pathRoot + "/" + file.Name()
